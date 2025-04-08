@@ -1,0 +1,18 @@
+{
+  "name": "@emerald/auth",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --hot src/issuer.ts",
+    "clean": "rm -rf .turbo node_modules",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@openauthjs/openauth": "^0.4.3",
+    "@emerald/auth-utils": "workspace:*",
+    "@emerald/db": "workspace:*"
+  },
+  "devDependencies": {
+    "@emerald/typescript-config": "workspace:*"
+  }
+}

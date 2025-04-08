@@ -1,0 +1,35 @@
+{
+  "name": "@emerald/db",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "biome check .",
+    "format": "biome --write .",
+    "typecheck": "tsc --noEmit",
+    "db:pull": "drizzle-kit pull",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "bun src/seed-db.ts"
+  },
+  "devDependencies": {
+    "@emerald/typescript-config": "workspace:*",
+    "drizzle-kit": "^0.30.6",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.41.0",
+    "drizzle-seed": "^0.3.1",
+    "drizzle-zod": "^0.7.1",
+    "postgres": "^3.4.5"
+  },
+  "exports": {
+    "./*": "./src/*.ts"
+  }
+}

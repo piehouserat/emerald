@@ -1,0 +1,3 @@
+{
+  "extends": "@emerald/typescript-config/base.json"
+}

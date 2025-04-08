@@ -1,0 +1,26 @@
+{
+  "name": "emerald",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo clean",
+    "format-and-lint": "biome check .",
+    "format-and-lint:fix": "biome check . --write",
+    "typecheck": "turbo typecheck",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "turbo": "^2.5.0",
+    "typescript": "5.8.2"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "bun@1.2.8",
+  "workspaces": ["apps/*", "packages/*"]
+}
