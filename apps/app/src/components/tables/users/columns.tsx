@@ -1,23 +1,23 @@
+import type { User } from "@/lib/api";
 import type { ColumnDef } from "@tanstack/react-table";
-
-export type User = {
-  id: string;
-  name: string;
-  email: string;
-};
+import { UsersTableActions } from "./users-table-actions";
 
 export const usersColumns: ColumnDef<User>[] = [
   {
     header: "Name",
     accessorKey: "name",
-    //   cell: ({ row }) => {
-    //     const user = row.original;
-
-    //     return <FullNameFormatter value={user} />;
-    //   },
   },
   {
     accessorKey: "email",
     header: "Email",
+  },
+  {
+    id: "actions",
+    enableHiding: false,
+    cell: ({ row }) => {
+      const user = row.original;
+
+      return <UsersTableActions user={user} />;
+    },
   },
 ];

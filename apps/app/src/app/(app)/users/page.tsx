@@ -1,9 +1,12 @@
-import { HonoAPIUsers } from "@/components/hono-api-users";
+import { Users } from "@/components/users";
+import { getUsers } from "@/lib/api";
 
 export default async function UsersPage() {
+  const users = await getUsers();
+
   return (
     <>
-      <HonoAPIUsers />
+      <Users users={users} />
     </>
   );
 }

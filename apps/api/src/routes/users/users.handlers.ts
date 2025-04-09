@@ -3,6 +3,7 @@ import type {
   GetOneRoute,
   ListRoute,
   PatchRoute,
+  RemoveRoute,
 } from "./users.routes";
 import type { AppRouteHandler } from "@/lib/types";
 import * as HttpStatusCodes from "@/lib/http-status-codes";
@@ -11,6 +12,7 @@ import {
   createUser,
   getAllUsers,
   getUserById,
+  removeUser,
   updateUser,
 } from "@emerald/db/users/users.repository";
 import { ZOD_ERROR_CODES, ZOD_ERROR_MESSAGES } from "@/lib/constants";
@@ -78,4 +80,20 @@ export const patch: AppRouteHandler<PatchRoute> = async (c) => {
   }
 
   return c.json(updated, HttpStatusCodes.OK);
+};
+
+export const remove: AppRouteHandler<RemoveRoute> = async (c) => {
+  const { id } = c.req.valid("param");
+  const deletedUser = await removeUser(id);
+
+  if (!deletedUser) {
+    return c.json(
+      {
+        message: HttpStatusPhrases.NOT_FOUND,
+      },
+      HttpStatusCodes.NOT_FOUND,
+    );
+  }
+
+  return c.body(null, HttpStatusCodes.NO_CONTENT);
 };

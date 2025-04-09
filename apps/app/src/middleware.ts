@@ -8,11 +8,13 @@ export async function middleware(request: NextRequest) {
 
   try {
     const accessToken = request.cookies.get("access_token");
+
     if (accessToken) {
       const refreshToken = request.cookies.get("refresh_token");
       const verified = await client.verify(subjects, accessToken.value, {
         refresh: refreshToken?.value,
       });
+
       if (!verified.err) {
         if (verified.tokens)
           setTokens(verified.tokens.access, verified.tokens.refresh);
@@ -26,6 +28,7 @@ export async function middleware(request: NextRequest) {
     `${new URL(request.url).origin}/api/callback`,
     "code",
   );
+
   return NextResponse.redirect(url, 302);
 }
 

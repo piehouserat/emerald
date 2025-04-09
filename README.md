@@ -9,7 +9,6 @@ Slogan goes here
 - React
 - Typescript
 - Nextjs
-- Supabase
 - Shadcn UI
 - TailwindCSS
 
